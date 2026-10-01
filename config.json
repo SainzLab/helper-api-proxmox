@@ -1,0 +1,8 @@
+{
+  "pveIp": "192.168.8.133",
+  "pvePort": "8006",
+  "pveTokenId": "MobileApp",
+  "pveSecret": "5cd262a3-78c7-4d1c-bfa1-34659f662a9e",
+  "bridgeToken": "app_jdhxaz",
+  "bridgeSecret": "qfzoaek4cwillwofa5f"
+}

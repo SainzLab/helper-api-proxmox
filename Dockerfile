@@ -1,21 +1,22 @@
-# Menggunakan image Node.js versi Alpine yang sangat ringan
+# Gunakan image Node.js Alpine yang sangat ringan
 FROM node:20-alpine
 
-# Menentukan direktori kerja di dalam container
+# Tentukan direktori kerja
 WORKDIR /app
 
-# Menyalin file package.json dan package-lock.json terlebih dahulu
-# Ini memanfaatkan sistem cache Docker agar build lebih cepat jika dependensi tidak berubah
+# Copy file package.json dan install dependencies
 COPY package*.json ./
-
-# Menginstal dependensi (express, axios) khusus untuk environment production
 RUN npm install --omit=dev
 
-# Menyalin seluruh sisa kode (termasuk server.js) ke dalam container
+# Install OpenSSL dan Generate Self-Signed Certificate secara otomatis
+RUN apk add --no-cache openssl && \
+    openssl req -nodes -new -x509 -keyout server.key -out server.cert -subj "/C=ID/CN=mymomox-bridge"
+
+# Copy seluruh sisa kode (termasuk server.js)
 COPY . .
 
-# Membuka port 3000 agar bisa diakses dari luar container
+# Buka port 3000
 EXPOSE 3000
 
-# Perintah utama untuk menjalankan server saat container dinyalakan
+# Jalankan server
 CMD ["node", "server.js"]

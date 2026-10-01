@@ -59,7 +59,7 @@ async function promptForCredentials() {
     const question = (query) => new Promise(resolve => rl.question(query, resolve));
 
     console.log("\n==================================================");
-    console.log("MYMOMOX BRIDGE SETUP (CLI MODE)");
+    console.log(" PROXY SETUP");
     console.log("==================================================");
     
     config.pveIp = await question("IP Proxmox Lokal (misal 192.168.8.133) : ");
@@ -80,7 +80,7 @@ async function promptForCredentials() {
 
 function showAppCredentials() {
     console.log("\n==================================================");
-    console.log("MASUKKAN DATA INI KE APLIKASI MYMOMOX DI HP");
+    console.log("INFO KREDENSIAL");
     console.log("==================================================");
     console.log(`IP Address   : (Gunakan IP Publik)`);
     console.log(`Port         : ${PORT} (default)`);
